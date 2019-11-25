@@ -11,13 +11,20 @@ export default class CreateExercise extends Component {
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangeDuration = this.onChangeDuration.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
+    this.onChangePush = this.onChangePush.bind(this);
+    this.onChangeReps = this.onChangeReps.bind(this);
+    this.onChangeTempo = this.onChangeTempo.bind(this);
+    this.onChangeWeight = this.onChangeWeight.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       username: '',
       description: '',
-      duration: 0,
       date: new Date(),
+      duration: '',
+      reps: '',
+      tempo: '',
+      weight: '',
       users: []
     };
   }
@@ -58,19 +65,42 @@ export default class CreateExercise extends Component {
       date: date
     });
   }
+  onChangePush(e) {
+    this.setState({
+      push: e.target.value
+    });
+  }
+  onChangeReps(e) {
+    this.setState({
+      reps: e.target.value
+    });
+  }
+  onChangeTempo(e) {
+    this.setState({
+      tempo: e.target.value
+    });
+  }
+  onChangeWeight(e) {
+    this.setState({
+      weight: e.target.value
+    });
+  }
   onSubmit(e) {
     e.preventDefault();
     const exercise = {
       username: this.state.username,
       description: this.state.description,
       duration: this.state.duration,
-      date: this.state.date
+      date: this.state.date,
+      reps: this.state.reps,
+      tempo: this.state.tempo,
+      weight: this.state.weight
     };
     console.log(exercise);
     axios
       .post('http://localhost:5000/exercises/add', exercise)
       .then(res => console.log(res.data));
-    window.location = '/';
+    // window.location = '/';
   }
 
   render() {
@@ -107,15 +137,6 @@ export default class CreateExercise extends Component {
             />
           </div>
           <div className='form-group'>
-            <label>Duration (in minutes): </label>
-            <input
-              type='text'
-              className='form-control'
-              value={this.state.duration}
-              onChange={this.onChangeDuration}
-            />
-          </div>
-          <div className='form-group'>
             <label>Date: </label>
             <div>
               <DatePicker
@@ -123,6 +144,54 @@ export default class CreateExercise extends Component {
                 onChange={this.onChangeDate}
               />
             </div>
+          </div>
+          <div className='form-group'>
+            <label>Duration (in minutes): </label>
+            <input
+              type='text'
+              className=''
+              value={this.state.duration}
+              onChange={this.onChangeDuration}
+            />
+          </div>
+          <div className='form-group'>
+            <label>Reps : </label>
+            <input
+              type='text'
+              className=''
+              value={this.state.reps}
+              onChange={this.onChangeReps}
+            />
+          </div>
+          <div className='form-group'>
+            <label>Push/Pull : </label>
+            <input
+              type='range'
+              name='push'
+              min='0'
+              max='1'
+              className=''
+              value={this.state.push}
+              onChange={this.onChangePush}
+            />
+          </div>
+          <div className='form-group'>
+            <label>Tempo: </label>
+            <input
+              type='text'
+              className=''
+              value={this.state.tempo}
+              onChange={this.onChangeTempo}
+            />
+          </div>
+          <div className='form-group'>
+            <label>Weight (in pounds): </label>
+            <input
+              type='text'
+              className=''
+              value={this.state.weight}
+              onChange={this.onChangeWeight}
+            />
           </div>
 
           <div className='form-group'>

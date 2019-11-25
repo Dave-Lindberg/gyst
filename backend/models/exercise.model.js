@@ -6,8 +6,12 @@ const exerciseSchema = new Schema(
   {
     username: { type: String, required: true },
     description: { type: String, required: true },
-    duration: { type: Number, required: true },
-    date: { type: Date, required: true }
+    date: { type: Date, required: true },
+    duration: { type: Number, default: 0 },
+    reps: { type: Number, default: '' },
+    push: { type: Boolean, default: 0 },
+    tempo: { type: String, default: '' },
+    weight: { type: Number, default: '' }
   },
   {
     timestamps: true
