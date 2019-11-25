@@ -22,6 +22,7 @@ export default class CreateExercise extends Component {
       description: '',
       date: new Date(),
       duration: '',
+      push: '',
       reps: '',
       tempo: '',
       weight: '',

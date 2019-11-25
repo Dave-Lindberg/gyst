@@ -13,7 +13,6 @@ router.route('/add').post((req, res) => {
   const date = Date.parse(req.body.date);
   const duration = Number(req.body.duration);
   const reps = Number(req.body.reps);
-  const push = Number(req.body.push);
   const tempo = req.body.tempo;
   const weight = Number(req.body.weight);
 
@@ -23,7 +22,6 @@ router.route('/add').post((req, res) => {
     date,
     duration,
     reps,
-    push,
     tempo,
     weight
   });
@@ -52,7 +50,6 @@ router.route('/update/:id').post((req, res) => {
       exercise.date = Date.parse(req.body.date);
       exercise.duration = Number(req.body.duration);
       exercise.reps = Number(req.body.reps);
-      exercise.push = req.body.reps;
       exercise.tempo = req.body.tempo;
       exercise.weight = Number(req.body.weight);
       exercise

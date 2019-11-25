@@ -9,7 +9,6 @@ const exerciseSchema = new Schema(
     date: { type: Date, required: true },
     duration: { type: Number, default: 0 },
     reps: { type: Number, default: '' },
-    push: { type: Boolean, default: 0 },
     tempo: { type: String, default: '' },
     weight: { type: Number, default: '' }
   },
